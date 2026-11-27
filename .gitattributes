@@ -1,0 +1,19 @@
+# Normalise line endings on check-in, so the shell scripts and the Python build
+# scripts run the same way on Windows and on a Unix clone.
+* text=auto eol=lf
+
+# Batch files and PowerShell scripts are read by Windows tooling.
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+*.bat  text eol=crlf
+
+# The published stylesheets are consumed verbatim by the client.
+*.css  text eol=lf
+
+# Binary assets stay binary.
+*.webp binary
+*.png  binary
+*.jpg  binary
+*.mp4  binary
+*.exe  binary
+*.zip  binary

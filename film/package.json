@@ -1,0 +1,22 @@
+{
+  "name": "minimax-code-boot-film",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts Boot out/boot.mp4"
+  },
+  "dependencies": {
+    "@remotion/bundler": "^4.0.535",
+    "@remotion/cli": "^4.0.535",
+    "@remotion/media-utils": "^4.0.535",
+    "@remotion/noise": "^4.0.535",
+    "@remotion/paths": "^4.0.535",
+    "@remotion/renderer": "^4.0.535",
+    "@types/react": "^19.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.535",
+    "typescript": "^7.0.2"
+  }
+}

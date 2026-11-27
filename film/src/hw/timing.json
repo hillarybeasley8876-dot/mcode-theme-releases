@@ -1,0 +1,28 @@
+{
+  "fps": 60,
+  "duration": 13.6,
+  "bpm": 120,
+  "beat0": 0.115,
+  "enter": 1.115,
+  "icon": 1.615,
+  "hat": 2.115,
+  "tap": 2.615,
+  "bats": 3.365,
+  "summon": 3.615,
+  "currents": 4.615,
+  "glint": 6.115,
+  "glintFlash": 6.615,
+  "weave": 7.115,
+  "land": 9.615,
+  "lockup": 10.115,
+  "holdAt": 10.865,
+  "morph": 11.5,
+  "transitionStart": 12.2,
+  "transitionEnd": 13.1,
+  "window": {
+    "x": 0.12,
+    "y": 0.12,
+    "w": 0.76,
+    "h": 0.76
+  }
+}

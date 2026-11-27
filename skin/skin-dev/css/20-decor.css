@@ -1,0 +1,153 @@
+/* ── Layer 2: Halloween decoration (hand-written) ── */
+
+html[data-hwskin],
+html[data-hwskin] body {
+  background-color: var(--bg_default_primary);
+}
+
+html[data-hwskin] ::selection {
+  background: #ff8a1f4d;
+}
+
+/* ── home: moonlit night behind the start page ── */
+html[data-hwskin] [data-testid="home-panel-body"] {
+  background-color: var(--bg_default_primary);
+  background-image:
+    asset(pumpkins.webp),
+    radial-gradient(ellipse 260px 70px at calc(100% - 196px) calc(100% - 22px), #ff8a1f2e 0%, #ff8a1f00 100%),
+    radial-gradient(ellipse 72% 26% at 50% 104%, #b9a2ff1f 0%, #b9a2ff00 70%),
+    asset(bats.svg),
+    asset(moon.webp),
+    radial-gradient(ellipse 46% 40% at 50% 30%, #3a1d5a59 0%, #3a1d5a00 70%),
+    radial-gradient(ellipse 70% 38% at 50% 100%, #ff8a1f14 0%, #ff8a1f00 70%),
+    asset(stars.svg);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  background-position:
+    right 30px bottom 14px,
+    center,
+    center,
+    right 196px top 92px,
+    right 52px top 44px,
+    center,
+    center,
+    0 0;
+  background-size: 344px auto, 100% 100%, 100% 100%, 230px auto, 210px 210px, 100% 100%, 100% 100%, 420px 300px;
+}
+
+html[data-hwskin] [data-testid="mavis-home-content"] {
+  background: transparent !important;
+}
+
+/* greeting: a fixed Halloween line (the app's greeting rotates with the time of day) */
+html[data-hwskin] .mavis-centered-prompt-identity h1.desktop-text-brand-slogan,
+html[data-hwskin].mavis-platform-electron.mavis-desktop-typography-enabled .mavis-centered-prompt-identity h1.desktop-text-brand-slogan {
+  /* the client sizes this line with its own !important rule (4 classes); match it with more.
+     The original text collapses to nothing and the Halloween line takes exactly its 35px. */
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+html[data-hwskin] .mavis-centered-prompt-identity h1.desktop-text-brand-slogan::after {
+  content: "不给代码，就捣蛋！";
+  display: inline-block;
+  vertical-align: top;
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(92deg, #ffc285 0%, #ff8a1f 42%, #f49ab8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* home avatar: the octopus witch, hat tilted on top */
+html[data-hwskin] .mavis-centered-prompt-identity .group\/avatar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: asset(avatar_face.webp) center / cover no-repeat;
+  box-shadow: 0 0 0 1px #ff8a1f40, 0 0 18px #ff8a1f33;
+  pointer-events: none;
+}
+html[data-hwskin] .mavis-centered-prompt-identity .group\/avatar::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+  top: -30px;
+  width: 52px;
+  height: 39px;
+  background: asset(hat_small.webp) center / contain no-repeat;
+  transform: rotate(14deg);
+  pointer-events: none;
+}
+
+/* composer: candle glow, a shy ghost sitting on the corner of the home composer */
+html[data-hwskin] .mavis-message-input-card {
+  box-shadow: 0 0 0 1px #ff8a1f1c, 0 18px 50px #05020a99, 0 0 90px -20px #7b3fe04d !important;
+}
+html[data-hwskin] .mavis-message-input-card:focus-within {
+  box-shadow: 0 0 0 1px #ff8a1f59, 0 0 24px #ff8a1f2e, 0 18px 50px #05020a99 !important;
+}
+html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card {
+  position: relative;
+}
+html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card::after {
+  content: "";
+  position: absolute;
+  right: 26px;
+  top: -50px;
+  width: 44px;
+  height: 59px;
+  background: asset(ghost_peek.webp) center / contain no-repeat;
+  filter: drop-shadow(0 0 10px #d9c8ff59);
+  animation: hwskin-bob 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* recommendation chips light up like lanterns */
+html[data-hwskin] [data-testid="home-recommendations"] [role="tab"]:hover {
+  color: #ffb066 !important;
+  box-shadow: 0 0 14px #ff8a1f26;
+}
+
+/* sidebar: a cobweb in the corner and a spider on its thread */
+html[data-hwskin] .mavis-sidebar-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 116px;
+  height: 116px;
+  background: asset(web.svg) top right / 116px 116px no-repeat;
+  pointer-events: none;
+}
+html[data-hwskin] .mavis-sidebar-card::before {
+  content: "";
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  right: 50px;
+  width: 18px;
+  height: 72px;
+  background: asset(spider.svg) top center / 18px 72px no-repeat;
+  transform-origin: 50% 0;
+  animation: hwskin-spider 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes hwskin-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-5px) rotate(3deg); }
+}
+@keyframes hwskin-spider {
+  0%, 100% { transform: translateY(-6px) rotate(-2deg); }
+  50% { transform: translateY(3px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card::after,
+  html[data-hwskin] .mavis-sidebar-card::before {
+    animation: none;
+  }
+}

@@ -1,0 +1,207 @@
+/* ── Layer 2: Christmas decoration (hand-written) ── */
+
+html[data-hwskin],
+html[data-hwskin] body {
+  background-color: var(--bg_default_primary);
+}
+
+html[data-hwskin] ::selection {
+  background: #f2b84b4d;
+}
+
+/* title bar over the start page: the night colour the forest fades into at its top edge.
+   On every other page it keeps the client's own rule and stays flush with the page body. */
+html[data-hwskin]:has([data-testid="home-panel-body"]) header.windows-titlebar {
+  background: var(--bg_default_primary);
+}
+
+/* ── home: the snowy forest under the aurora, Santa's sleigh crossing the moon ── */
+html[data-hwskin] [data-testid="home-panel-body"] {
+  overflow: hidden;
+  background-color: var(--bg_default_primary);
+  background-image:
+    asset(gifts.webp),
+    radial-gradient(ellipse 300px 84px at calc(100% - 186px) calc(100% - 24px), #f2b84b38 0%, #f2b84b00 100%),
+    linear-gradient(to bottom, #07131f 0px, #07131f00 110px),
+    radial-gradient(ellipse 46% 36% at 50% 30%, #07131f99 0%, #07131f00 72%),
+    linear-gradient(#07131f4d, #07131f4d),
+    asset(xm_home_bg.webp);
+  background-repeat: no-repeat;
+  background-position:
+    right 36px bottom 12px,
+    center,
+    center,
+    center,
+    center,
+    right top;
+  background-size: 300px auto, 100% 100%, 100% 100%, 100% 100%, 100% 100%, cover;
+}
+
+/* slow snowfall behind the content: two tiles drifting down at different speeds */
+html[data-hwskin] [data-testid="home-panel-body"]::before,
+html[data-hwskin] [data-testid="home-panel-body"]::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+html[data-hwskin] [data-testid="home-panel-body"]::before {
+  top: -360px;
+  background: asset(xm_snow_a.svg) 0 0 / 360px 360px repeat;
+  animation: xmskin-snow-a 17s linear infinite;
+}
+html[data-hwskin] [data-testid="home-panel-body"]::after {
+  top: -520px;
+  background: asset(xm_snow_b.svg) 0 0 / 520px 520px repeat;
+  opacity: 0.85;
+  animation: xmskin-snow-b 29s linear infinite;
+}
+
+html[data-hwskin] [data-testid="mavis-home-content"] {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* greeting: a fixed Christmas line (the app's greeting rotates with the time of day) */
+html[data-hwskin] .mavis-centered-prompt-identity h1.desktop-text-brand-slogan,
+html[data-hwskin].mavis-platform-electron.mavis-desktop-typography-enabled .mavis-centered-prompt-identity h1.desktop-text-brand-slogan {
+  /* the client sizes this line with its own !important rule (4 classes); match it with more.
+     The original text collapses to nothing and the Christmas line takes exactly its 35px. */
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+html[data-hwskin] .mavis-centered-prompt-identity h1.desktop-text-brand-slogan::after {
+  content: "圣诞快乐，许个愿吧！";
+  display: inline-block;
+  vertical-align: top;
+  font-size: 28px;
+  line-height: 35px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: linear-gradient(92deg, #ffe9b0 0%, #f2b84b 36%, #ff8f7a 76%, #f49ab8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* home avatar: the octopus girl in her Santa hat. The hat inside the circle is part of xm_avatar.webp; the pop
+   hat adds the rest of her own hat (cone, pompom) outside it, cut from the same key visual (key/split_hat.py),
+   so the two join seamlessly instead of stacking a second, unrelated hat on her brim. */
+html[data-hwskin] .mavis-centered-prompt-identity [class~="group/avatar"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: asset(xm_avatar.webp) center / cover no-repeat;
+  box-shadow: 0 0 0 1px #f2b84b73, 0 0 18px #f2b84b40;
+  pointer-events: none;
+}
+html[data-hwskin] .mavis-centered-prompt-identity [class~="group/avatar"]::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  left: 2px;
+  top: -32px;
+  width: 91px;
+  height: 65px;
+  background: asset(hat_xm_pop.webp) center / contain no-repeat;
+  pointer-events: none;
+}
+
+/* composer: candle glow, a snow sprite sitting on the corner of the home composer */
+html[data-hwskin] .mavis-message-input-card {
+  box-shadow: 0 0 0 1px #f2b84b1f, 0 18px 50px #01060c99, 0 0 90px -20px #f2b84b3d !important;
+}
+html[data-hwskin] .mavis-message-input-card:focus-within {
+  box-shadow: 0 0 0 1px #f2b84b66, 0 0 24px #f2b84b33, 0 18px 50px #01060c99 !important;
+}
+html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card {
+  position: relative;
+}
+html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card::after {
+  content: "";
+  position: absolute;
+  right: 22px;
+  top: -50px;
+  width: 54px;
+  height: 55px;
+  background: asset(sprite_peek.webp) center / contain no-repeat;
+  filter: drop-shadow(0 0 10px #fff3c966);
+  animation: xmskin-bob 4.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* recommendation chips light up like fairy lights */
+html[data-hwskin] [data-testid="home-recommendations"] [role="tab"]:hover {
+  color: #ffd98a !important;
+  box-shadow: 0 0 14px #f2b84b33;
+}
+
+/* the sidebar's local / cloud switch is an antd control that keeps its own greys: bring it into the night palette */
+html[data-hwskin] .mavis-segmented.ant-segmented {
+  background-color: #e3eeff0a !important;
+}
+html[data-hwskin] .mavis-segmented .ant-segmented-item {
+  color: var(--text_default_secondary) !important;
+}
+html[data-hwskin] .mavis-segmented .ant-segmented-item-selected,
+html[data-hwskin] .mavis-segmented .ant-segmented-thumb {
+  background-color: var(--bg_interaction_secondary_selected) !important;
+  color: var(--text_default_primary) !important;
+}
+
+/* sidebar: a pine sprig with holly in the corner (behind the entries), a bauble swinging on its thread */
+html[data-hwskin] .mavis-sidebar-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 132px;
+  height: 132px;
+  background: asset(xm_sprig.svg) top right / 132px 132px no-repeat;
+  pointer-events: none;
+}
+html[data-hwskin] .mavis-sidebar-card::before {
+  content: "";
+  position: absolute;
+  z-index: 60;
+  top: 0;
+  right: 82px;
+  width: 22px;
+  height: 72px;
+  background: asset(xm_bauble.svg) top center / 22px 72px no-repeat;
+  transform-origin: 50% 0;
+  animation: xmskin-swing 5.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes xmskin-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-5px) rotate(3deg); }
+}
+@keyframes xmskin-swing {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+@keyframes xmskin-snow-a {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 360px, 0); }
+}
+@keyframes xmskin-snow-b {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(0, 520px, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-hwskin] [data-testid="home-panel-body"]::before,
+  html[data-hwskin] [data-testid="home-panel-body"]::after,
+  html[data-hwskin] [data-testid="mavis-home-content"] .mavis-message-input-card::after,
+  html[data-hwskin] .mavis-sidebar-card::before {
+    animation: none;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "AutoReplaceEntrypoints": false,
+  "ScanAllLocalDrives": false,
+  "Video": "media/startup.mp4",
+  "AppLaunch": "shell:AppsFolder\\com.minimax.agent.cn",
+  "ProcessPathContains": "\\MiniMax Code\\",
+  "OfficialExecutable": "%LOCALAPPDATA%\\Programs\\MiniMax Code\\MiniMax Code.exe",
+  "ProcessNames": [
+    "MiniMax Code"
+  ],
+  "HoldAt": 11.62,
+  "TransitionStart": 12.95,
+  "TransitionEnd": 13.85,
+  "MaxWaitSeconds": 60,
+  "Volume": 1,
+  "PlayerWidth": 1920,
+  "PlayerHeight": 1080,
+  "MatchClientToPlayer": true,
+  "ScreenFrames": [
+    {
+      "Time": 12.95,
+      "X": 0.12,
+      "Y": 0.12,
+      "Width": 0.76,
+      "Height": 0.76
+    },
+    {
+      "Time": 13.85,
+      "X": 0.12,
+      "Y": 0.12,
+      "Width": 0.76,
+      "Height": 0.76
+    }
+  ],
+  "DisplayName": "MiniMax Code"
+}
