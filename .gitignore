@@ -20,12 +20,14 @@ film/_xm2/
 film/out_*.mp4
 *.mp4
 
-# Generated art and mattes; regenerate with the scripts in skin/skin-dev
+# Generated art and mattes; regenerate with the scripts in skin/skin-dev.
+# The README in that folder explains what the art is and why it is not published.
 skin/skin-dev/__pycache__/
 skin/skin-dev/asar-test/
 skin/skin-dev/_*.png
 skin/skin-dev/_*.jpg
-skin/skin-dev/assets/
+skin/skin-dev/assets/*
+!skin/skin-dev/assets/README.md
 
 # Local scratch
 *.log
